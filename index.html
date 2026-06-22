@@ -3,1035 +3,468 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LUMINA — Swimwear & Fashion</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Sun & Swim · Bikini Store</title>
+  <!-- Font Awesome Icons (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --black:    #0a0a0a;
-      --card:     #111111;
-      --ivory:    #f5f0e8;
-      --muted:    #7a756e;
-      --accent:   #c97f5e;
-      --accent2:  #b8704f;
-      --white:    #ffffff;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
-      color: var(--ivory);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
+      background-color: #fefcf9;
+      color: #1e1e1e;
+      line-height: 1.5;
     }
 
-    /* ─── ANNOUNCEMENT BAR ─── */
-    .topbar {
-      background: var(--accent);
-      text-align: center;
-      padding: 10px 20px;
-      font-size: 11.5px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
+    .wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
     }
 
-    /* ─── NAV ─── */
-    .nav {
-      position: fixed;
-      top: 34px; left: 0; right: 0;
-      z-index: 200;
+    /* header / nav */
+    .navbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 22px 56px;
-      background: linear-gradient(to bottom, rgba(10,10,10,.85) 0%, transparent 100%);
-      transition: background .3s, padding .3s;
-    }
-    .nav.pinned {
-      background: rgba(10,10,10,.97);
-      backdrop-filter: blur(14px);
-      padding: 16px 56px;
+      align-items: center;
+      padding: 0.5rem 0 1.5rem 0;
+      border-bottom: 1px solid #e6dfd8;
+      flex-wrap: wrap;
     }
 
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
+    .logo {
+      font-size: 1.8rem;
       font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
+      letter-spacing: -0.5px;
+      color: #1e1e1e;
+    }
+    .logo i {
+      color: #d48c6c;
+      margin-right: 6px;
     }
 
     .nav-links {
       display: flex;
-      gap: 38px;
-      list-style: none;
+      gap: 2rem;
+      font-weight: 450;
     }
     .nav-links a {
-      color: rgba(245,240,232,.82);
       text-decoration: none;
-      font-size: 11.5px;
-      font-weight: 400;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      transition: color .2s;
+      color: #2c2c2c;
+      font-size: 1rem;
+      transition: color 0.15s;
     }
-    .nav-links a:hover { color: var(--accent); }
-
+    .nav-links a:hover {
+      color: #d48c6c;
+    }
     .nav-icons {
       display: flex;
-      gap: 18px;
-      align-items: center;
+      gap: 1.2rem;
+      font-size: 1.2rem;
+      color: #2c2c2c;
     }
-    .nav-icons svg {
-      width: 19px; height: 19px;
-      stroke: rgba(245,240,232,.75);
-      cursor: pointer;
-      transition: stroke .2s;
+    .nav-icons i {
+      cursor: default;
+      transition: color 0.15s;
     }
-    .nav-icons svg:hover { stroke: var(--accent); }
+    .nav-icons i:hover {
+      color: #d48c6c;
+    }
 
-    /* ─── HERO ─── */
+    /* hero */
     .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      overflow: hidden;
-    }
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 15%;
-      filter: brightness(.58);
-      transform: scale(1.05);
-      transition: transform 9s ease-out;
-    }
-    .hero-img.ready { transform: scale(1); }
-
-    .hero-gradient {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to right, rgba(10,10,10,.5) 0%, rgba(10,10,10,.05) 60%),
-        linear-gradient(to top,   rgba(10,10,10,.75) 0%, transparent 60%);
-    }
-
-    .hero-body {
-      position: absolute;
-      bottom: 11%;
-      left: 56px;
-    }
-    .hero-eyebrow {
-      font-size: 10.5px;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 18px;
-      animation: fadeUp .7s ease forwards;
-    }
-    .hero-h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(60px, 9vw, 116px);
-      font-weight: 300;
-      line-height: .9;
-      letter-spacing: -.01em;
-      margin-bottom: 26px;
-      animation: fadeUp .7s .12s ease both;
-    }
-    .hero-h1 em { font-style: italic; color: var(--accent); }
-
-    .hero-sub {
-      font-size: 15px;
-      color: rgba(245,240,232,.72);
-      line-height: 1.65;
-      max-width: 360px;
-      margin-bottom: 38px;
-      animation: fadeUp .7s .24s ease both;
-    }
-    .hero-btns {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      animation: fadeUp .7s .36s ease both;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 38px;
-      right: 56px;
-      display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 10.5px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,.45);
-    }
-    .scroll-bar {
-      width: 52px; height: 1px;
-      background: rgba(245,240,232,.2);
-      position: relative; overflow: hidden;
-    }
-    .scroll-bar::after {
-      content: '';
-      position: absolute;
-      left: -100%; top: 0;
-      width: 100%; height: 100%;
-      background: var(--accent);
-      animation: slide 2.2s infinite;
-    }
-    @keyframes slide { to { left: 100%; } }
-
-    /* ─── BUTTONS ─── */
-    .btn-fill {
-      display: inline-block;
-      padding: 15px 40px;
-      background: var(--accent);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background .22s, transform .18s;
-    }
-    .btn-fill:hover { background: var(--accent2); transform: translateY(-2px); }
-
-    .btn-ghost {
-      display: inline-block;
-      padding: 14px 40px;
-      background: transparent;
-      color: var(--ivory);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1px solid rgba(245,240,232,.35);
-      cursor: pointer;
-      transition: all .22s;
-    }
-    .btn-ghost:hover {
-      border-color: var(--ivory);
-      background: rgba(245,240,232,.06);
-    }
-
-    /* ─── SECTION BASE ─── */
-    .section {
-      padding: 96px 56px;
-    }
-
-    .sec-head {
-      display: flex;
-      align-items: flex-end;
       justify-content: space-between;
-      margin-bottom: 52px;
+      margin: 2.5rem 0 3rem 0;
+      gap: 2rem;
     }
-    .sec-eyebrow {
-      font-size: 10.5px;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      color: var(--accent);
+    .hero-text {
+      flex: 1 1 280px;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
       font-weight: 500;
-      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
     }
-    .sec-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(34px, 4.5vw, 58px);
-      font-weight: 300;
-      line-height: .97;
-    }
-    .sec-title em { font-style: italic; }
-
-    .link-all {
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid var(--muted);
-      padding-bottom: 2px;
-      transition: color .2s, border-color .2s;
-    }
-    .link-all:hover { color: var(--ivory); border-color: var(--ivory); }
-
-    /* ─── CATEGORY STRIP ─── */
-    .cat-strip-wrap {
-      background: #0d0d0d;
-      padding: 50px 56px;
-    }
-    .cat-strip {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .cat-strip::-webkit-scrollbar { display: none; }
-    .cat-pill {
-      flex-shrink: 0;
-      padding: 11px 26px;
-      border: 1px solid rgba(245,240,232,.1);
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all .2s;
-      user-select: none;
-    }
-    .cat-pill:hover { border-color: rgba(201,127,94,.5); color: var(--accent); }
-    .cat-pill.active { border-color: var(--accent); color: var(--accent); }
-
-    /* ─── MASONRY GRID (4 col, staggered) ─── */
-    .masonry {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      align-items: start;
-    }
-    .masonry .pc:nth-child(2) { margin-top: 64px; }
-    .masonry .pc:nth-child(4) { margin-top: 38px; }
-    .masonry .pc:nth-child(2) .pc-img { aspect-ratio: 3/5; }
-
-    /* ─── PRODUCT CARD ─── */
-    .pc { cursor: pointer; }
-
-    .pc-img {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 3/4;
-    }
-    .pc-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: transform .52s ease;
-      display: block;
-    }
-    .pc:hover .pc-img img { transform: scale(1.05); }
-
-    .pc-badge {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      padding: 5px 11px;
-    }
-    .pc-badge.sale { background: #2d6a4f; }
-
-    .pc-actions {
-      position: absolute;
-      top: 14px; right: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      opacity: 0;
-      transform: translateX(8px);
-      transition: opacity .25s, transform .25s;
-    }
-    .pc:hover .pc-actions { opacity: 1; transform: translateX(0); }
-
-    .pc-action-btn {
-      width: 34px; height: 34px;
-      background: rgba(10,10,10,.82);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--ivory);
-      transition: background .2s;
-    }
-    .pc-action-btn:hover { background: var(--accent); }
-    .pc-action-btn svg { width: 14px; height: 14px; stroke: currentColor; }
-
-    .pc-quick {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: rgba(10,10,10,.92);
-      color: var(--ivory);
-      text-align: center;
-      font-size: 10.5px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      padding: 15px;
-      border: none;
-      width: 100%;
-      cursor: pointer;
-      transform: translateY(100%);
-      transition: transform .28s ease;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .pc:hover .pc-quick { transform: translateY(0); }
-    .pc-quick:hover { background: var(--accent); }
-
-    .pc-info { padding: 16px 0 0; }
-    .pc-cat {
-      font-size: 10px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .pc-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+    .hero-text h1 span {
+      color: #d48c6c;
       font-weight: 400;
-      letter-spacing: .02em;
-      margin-bottom: 7px;
     }
-    .pc-price { font-size: 14px; font-weight: 500; color: var(--accent); }
-    .pc-price .old { text-decoration: line-through; color: var(--muted); font-weight: 300; font-size: 12px; margin-right: 6px; }
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #4a4a4a;
+      max-width: 400px;
+      margin-bottom: 1.8rem;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #1e1e1e;
+      color: #fefcf9;
+      padding: 0.7rem 2.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 450;
+      transition: background 0.2s;
+      border: 1px solid #1e1e1e;
+    }
+    .btn:hover {
+      background-color: #3d3d3d;
+      border-color: #3d3d3d;
+    }
+    .btn-outline {
+      background: transparent;
+      color: #1e1e1e;
+      border: 1px solid #b0a8a0;
+      margin-left: 0.6rem;
+    }
+    .btn-outline:hover {
+      background: #eae5e0;
+      border-color: #8f7e6e;
+    }
 
-    /* ─── FEATURE BANNER ─── */
-    .feat-wrap {
-      padding: 0 56px;
-      margin-top: -12px;
-    }
-    .feat-banner {
-      position: relative;
-      height: 68vh;
-      min-height: 440px;
+    .hero-image {
+      flex: 1 1 320px;
+      background: #e6dfd8;
+      border-radius: 28px;
       overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      transition: transform 0.2s;
     }
-    .feat-banner img {
-      width: 100%; height: 100%;
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
       object-fit: cover;
-      object-position: center 22%;
-      filter: brightness(.52);
-      transition: transform .5s ease;
+      aspect-ratio: 4/3;
     }
-    .feat-banner:hover img { transform: scale(1.02); }
 
-    .feat-content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 20px;
-    }
-    .feat-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(50px, 8.5vw, 108px);
-      font-weight: 300;
-      line-height: .88;
-      letter-spacing: .04em;
-    }
-    .feat-title em { font-style: italic; color: var(--accent); }
-
-    /* ─── 3-COL GRID ─── */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .grid-3 .pc-img { aspect-ratio: 2/3; }
-
-    /* ─── MORE STYLES (4 col) ─── */
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    .grid-4 .pc-img { aspect-ratio: 3/4; }
-    .grid-4 .pc-name { font-size: 17px; }
-    .grid-4 .pc-price { font-size: 13px; }
-
-    /* ─── HR ─── */
-    .hr { height: 1px; background: rgba(245,240,232,.07); margin: 0 56px; }
-
-    /* ─── NEWSLETTER ─── */
-    .newsletter {
-      background: var(--card);
-      text-align: center;
-      padding: 84px 56px;
-    }
-    .nl-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(30px, 4vw, 50px);
-      font-weight: 300;
-      margin-bottom: 12px;
-    }
-    .nl-title em { font-style: italic; }
-    .nl-sub { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
-    .nl-form {
-      display: flex;
-      max-width: 460px;
-      margin: 0 auto;
-    }
-    .nl-input {
-      flex: 1;
-      background: rgba(245,240,232,.05);
-      border: 1px solid rgba(245,240,232,.14);
-      border-right: none;
-      color: var(--ivory);
-      padding: 15px 20px;
-      font-size: 14px;
-      font-family: 'DM Sans', sans-serif;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .nl-input::placeholder { color: var(--muted); }
-    .nl-input:focus { border-color: rgba(201,127,94,.5); }
-    .nl-btn {
-      background: var(--accent);
-      color: var(--white);
-      border: none;
-      padding: 15px 26px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: background .22s;
-    }
-    .nl-btn:hover { background: var(--accent2); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #060606;
-      padding: 72px 56px 38px;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 2.2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 58px;
-      border-bottom: 1px solid rgba(245,240,232,.06);
-    }
-    .ft-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .ft-desc {
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height: 1.75;
-      max-width: 250px;
-      margin-bottom: 26px;
-    }
-    .ft-socials { display: flex; gap: 12px; }
-    .ft-socials a {
-      width: 34px; height: 34px;
-      border: 1px solid rgba(245,240,232,.12);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 400;
-      color: var(--muted);
-      text-decoration: none;
-      transition: all .2s;
-    }
-    .ft-socials a:hover { border-color: var(--accent); color: var(--accent); }
-
-    .ft-col-title {
-      font-size: 10.5px;
-      letter-spacing: .26em;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin-bottom: 22px;
-      color: var(--ivory);
-    }
-    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .ft-links a {
-      color: var(--muted);
-      font-size: 13.5px;
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .ft-links a:hover { color: var(--ivory); }
-
-    .footer-bottom {
-      padding-top: 28px;
+    /* section title */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 450;
+      letter-spacing: -0.3px;
+      margin: 2.8rem 0 1.8rem 0;
       display: flex;
       align-items: center;
+      gap: 0.8rem;
+    }
+    .section-title i {
+      color: #d48c6c;
+      font-size: 1.4rem;
+    }
+
+    /* product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem 1.5rem;
+      margin: 1.5rem 0 3rem 0;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 24px;
+      padding: 0.8rem 0.8rem 1.4rem 0.8rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+      transition: transform 0.15s, box-shadow 0.2s;
+      border: 1px solid #f0ebe6;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.04);
+      border-color: #ddd6ce;
+    }
+
+    .product-image {
+      background: #f0ebe6;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 0.8rem;
+      aspect-ratio: 1 / 1.1;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .product-card:hover .product-image img {
+      transform: scale(1.02);
+    }
+
+    .product-info {
+      padding: 0 0.2rem;
+    }
+    .product-name {
+      font-weight: 480;
+      font-size: 1rem;
+      letter-spacing: -0.2px;
+    }
+    .product-price {
+      font-weight: 400;
+      color: #3f3f3f;
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+    }
+    .product-price span {
+      color: #d48c6c;
+      font-weight: 450;
+    }
+
+    .product-tag {
+      display: inline-block;
+      background: #ece5de;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.8rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      color: #4d3e32;
+      margin-top: 0.3rem;
+    }
+
+    /* footer */
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem 0 1.5rem 0;
+      border-top: 1px solid #e0d9d2;
+      display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      font-size: 11.5px;
-      color: rgba(122,117,110,.55);
+      align-items: center;
+      gap: 1.2rem;
+      color: #3e3a36;
+    }
+    .footer .social i {
+      font-size: 1.3rem;
+      margin-left: 1.2rem;
+      color: #55504a;
+      transition: color 0.15s;
+    }
+    .footer .social i:hover {
+      color: #d48c6c;
+    }
+    .footer small {
+      font-weight: 350;
+      letter-spacing: 0.2px;
     }
 
-    /* ─── KEYFRAMES ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ─── TOAST ─── */
-    .toast {
-      position: fixed;
-      bottom: 32px; right: 32px;
-      background: #1a1a1a;
-      border-left: 3px solid var(--accent);
-      color: var(--ivory);
-      padding: 14px 22px;
-      font-size: 13px;
-      letter-spacing: .04em;
-      z-index: 999;
-      transform: translateY(80px);
-      opacity: 0;
-      transition: all .3s ease;
-      pointer-events: none;
-    }
-    .toast.show { transform: translateY(0); opacity: 1; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1024px) {
-      .masonry { grid-template-columns: repeat(2, 1fr); }
-      .masonry .pc:nth-child(2) { margin-top: 0; }
-      .masonry .pc:nth-child(4) { margin-top: 0; }
-      .masonry .pc:nth-child(2) .pc-img { aspect-ratio: 3/4; }
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-    }
-    @media (max-width: 768px) {
-      .nav { padding: 18px 24px; }
-      .nav.pinned { padding: 14px 24px; }
-      .nav-links { display: none; }
-      .section { padding: 64px 24px; }
-      .cat-strip-wrap { padding: 38px 24px; }
-      .hr { margin: 0 24px; }
-      .feat-wrap { padding: 0 24px; }
-      .newsletter { padding: 60px 24px; }
-      footer { padding: 56px 24px 32px; }
-      .footer-top { grid-template-columns: 1fr; gap: 36px; }
-      .grid-3 { grid-template-columns: 1fr 1fr; }
-      .grid-4 { grid-template-columns: 1fr 1fr; }
-      .hero-body { left: 24px; right: 24px; }
-      .hero-scroll { display: none; }
+    /* responsive */
+    @media (max-width: 680px) {
+      .wrapper {
+        padding: 1rem 1.2rem;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      .btn-outline {
+        margin-left: 0;
+        margin-top: 0.6rem;
+      }
+      .hero {
+        margin: 1.5rem 0 1.5rem 0;
+      }
     }
   </style>
 </head>
 <body>
+<div class="wrapper">
 
-<!-- Announcement -->
-<div class="topbar">Free Worldwide Shipping Over $120 &nbsp;·&nbsp; New Drops Every Friday &nbsp;·&nbsp; Use Code LUMINA15 For 15% Off</div>
+  <!-- header -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fas fa-umbrella-beach"></i> Sun & Swim
+    </div>
+    <div class="nav-links">
+      <a href="#">New</a>
+      <a href="#">Bikinis</a>
+      <a href="#">One-pieces</a>
+      <a href="#">Cover-ups</a>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="far fa-user"></i>
+      <i class="fas fa-shopping-bag"></i>
+    </div>
+  </header>
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <a href="#" class="nav-logo">LUMINA</a>
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#arrivals">Shop</a></li>
-    <li><a href="#the-edit">Collection</a></li>
-    <li><a href="#more">Lookbook</a></li>
-    <li><a href="#">About</a></li>
-  </ul>
-  <div class="nav-icons">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  <!-- hero / featured (bikini focus) -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Sun, sea & <span>style</span><br>your perfect bikini</h1>
+      <p>Fresh drops from our summer collection — made for waves and sunshine.</p>
+      <div>
+        <a href="#" class="btn">Shop bikinis</a>
+        <a href="#" class="btn btn-outline">Explore</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <!-- random free image from picsum, but we force 'bikini' seed to get swimwear -->
+      <img src="https://picsum.photos/seed/bikinihero/600/450" alt="beach style" loading="lazy">
+    </div>
+  </section>
+
+  <!-- product grid – bikini focus -->
+  <div class="section-title">
+    <i class="fas fa-circle" style="font-size: 0.6rem;"></i> Bikini edit
   </div>
-</nav>
 
-<!-- Hero -->
-<div class="hero">
-  <img class="hero-img" id="heroImg"
-    src="images/vicente-viana-gMqOGFozk_o-unsplash.jpg"
-    alt="Crimson Wave Collection">
-  <div class="hero-gradient"></div>
-  <div class="hero-body">
-    <div class="hero-eyebrow">Summer 2025 · New Collection</div>
-    <h1 class="hero-h1">Wear<br><em>Your</em><br>Story</h1>
-    <p class="hero-sub">Handcrafted swimwear &amp; fashion for women who move through the world on their own terms.</p>
-    <div class="hero-btns">
-      <a href="#arrivals" class="btn-fill">Shop New Arrivals</a>
-      <a href="#the-edit" class="btn-ghost">View Lookbook</a>
+  <div class="product-grid">
+    <!-- card 1 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini1/400/440" alt="triangle bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Triangle tie bikini</div>
+        <div class="product-price"><span>$68</span></div>
+        <span class="product-tag">new</span>
+      </div>
+    </div>
+
+    <!-- card 2 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini2/400/440" alt="high-waist bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">High-waist retro bikini</div>
+        <div class="product-price"><span>$74</span></div>
+        <span class="product-tag">classic</span>
+      </div>
+    </div>
+
+    <!-- card 3 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini3/400/440" alt="sporty bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Sporty halter bikini</div>
+        <div class="product-price"><span>$62</span></div>
+        <span class="product-tag">active</span>
+      </div>
+    </div>
+
+    <!-- card 4 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini4/400/440" alt="bandeau bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Bandeau strapless bikini</div>
+        <div class="product-price"><span>$79</span></div>
+        <span class="product-tag">sale</span>
+      </div>
+    </div>
+
+    <!-- card 5 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini5/400/440" alt="crochet bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Crochet fringe bikini</div>
+        <div class="product-price"><span>$88</span></div>
+        <span class="product-tag">boho</span>
+      </div>
+    </div>
+
+    <!-- card 6 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini6/400/440" alt="ribbed bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Ribbed texture bikini</div>
+        <div class="product-price"><span>$56</span></div>
+        <span class="product-tag">trend</span>
+      </div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-bar"></div>
+
+  <!-- second row: more bikini styles & one-pieces -->
+  <div class="section-title" style="margin-top: 0.5rem;">
+    <i class="fas fa-circle" style="font-size: 0.6rem;"></i> More swim
   </div>
+  <div class="product-grid" style="margin-top: 0.2rem;">
+    <!-- card 7 - one-piece -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini7/400/440" alt="one-piece swimsuit" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Classic one-piece</div>
+        <div class="product-price"><span>$85</span></div>
+        <span class="product-tag">essential</span>
+      </div>
+    </div>
+    <!-- card 8 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini8/400/440" alt="string bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Minimal string bikini</div>
+        <div class="product-price"><span>$49</span></div>
+        <span class="product-tag">sale</span>
+      </div>
+    </div>
+    <!-- card 9 - bikini -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini9/400/440" alt="tropical print bikini" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Tropical print bikini</div>
+        <div class="product-price"><span>$72</span></div>
+        <span class="product-tag">new</span>
+      </div>
+    </div>
+    <!-- card 10 - cover-up -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://picsum.photos/seed/bikini10/400/440" alt="kaftan cover-up" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Sheer kaftan cover-up</div>
+        <div class="product-price"><span>$45</span></div>
+        <span class="product-tag">cover</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div>
+      <small>© 2026 Sun & Swim — made with <i class="fas fa-heart" style="color: #d48c6c; margin: 0 4px;"></i> for beach days</small>
+    </div>
+    <div class="social">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-pinterest"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
+  </footer>
+
 </div>
-
-<!-- Category Strip -->
-<div class="cat-strip-wrap">
-  <div class="cat-strip">
-    <div class="cat-pill active">All</div>
-    <div class="cat-pill">Swimwear</div>
-    <div class="cat-pill">Bikinis</div>
-    <div class="cat-pill">Lingerie</div>
-    <div class="cat-pill">Fashion</div>
-    <div class="cat-pill">Cover-Ups</div>
-    <div class="cat-pill">New Arrivals</div>
-    <div class="cat-pill">Sale</div>
-  </div>
-</div>
-
-<!-- New Arrivals -->
-<section class="section" id="arrivals">
-  <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Just Dropped</div>
-      <h2 class="sec-title">New <em>Arrivals</em></h2>
-    </div>
-    <a href="#" class="link-all">View All</a>
-  </div>
-
-  <div class="masonry">
-
-    <!-- Card 1 -->
-    <div class="pc">
-      <div class="pc-img">
-        <img src="images/daren-inshape-QmktCddNtPA-unsplash.jpg" alt="Tropicana Bikini Set" loading="lazy">
-        <span class="pc-badge">New</span>
-        <div class="pc-actions">
-          <button class="pc-action-btn" title="Wishlist">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <button class="pc-quick" onclick="addToCart(this, 'Tropicana Bikini Set')">Quick Add</button>
-      </div>
-      <div class="pc-info">
-        <div class="pc-cat">Swimwear · Bikini Set</div>
-        <div class="pc-name">Tropicana Set</div>
-        <div class="pc-price">$89.00</div>
-      </div>
-    </div>
-
-    <!-- Card 2 (tall) -->
-    <div class="pc">
-      <div class="pc-img">
-        <img src="images/brian-lawson-FvnKcbn7SU8-unsplash.jpg" alt="Neon Dusk Bikini" loading="lazy">
-        <span class="pc-badge">Bestseller</span>
-        <div class="pc-actions">
-          <button class="pc-action-btn" title="Wishlist">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <button class="pc-quick" onclick="addToCart(this, 'Neon Dusk Bikini')">Quick Add</button>
-      </div>
-      <div class="pc-info">
-        <div class="pc-cat">Swimwear · Triangle Bikini</div>
-        <div class="pc-name">Neon Dusk Bikini</div>
-        <div class="pc-price">$79.00</div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="pc">
-      <div class="pc-img">
-        <img src="images/brian-lawson-b1lyrH1DEUw-unsplash.jpg" alt="Dark Allure Set" loading="lazy">
-        <div class="pc-actions">
-          <button class="pc-action-btn" title="Wishlist">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <button class="pc-quick" onclick="addToCart(this, 'Dark Allure Set')">Quick Add</button>
-      </div>
-      <div class="pc-info">
-        <div class="pc-cat">Lingerie · Set</div>
-        <div class="pc-name">Dark Allure Set</div>
-        <div class="pc-price">$95.00</div>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="pc">
-      <div class="pc-img">
-        <img src="images/igor-starkov-Hea3QOjilSs-unsplash.jpg" alt="Desert Sun Bikini" loading="lazy">
-        <span class="pc-badge sale">Sale</span>
-        <div class="pc-actions">
-          <button class="pc-action-btn" title="Wishlist">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <button class="pc-quick" onclick="addToCart(this, 'Desert Sun Bikini')">Quick Add</button>
-      </div>
-      <div class="pc-info">
-        <div class="pc-cat">Swimwear · Bikini</div>
-        <div class="pc-name">Desert Sun Bikini</div>
-        <div class="pc-price"><span class="old">$99.00</span>$72.00</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Feature Collection Banner -->
-<div class="feat-wrap" id="the-edit">
-  <div class="feat-banner">
-    <img src="images/alex-azabache--Hm_xIcYbUY-unsplash.jpg" alt="Summer Collection 2025">
-    <div class="feat-content">
-      <div class="sec-eyebrow" style="font-size:11px;">Limited Edition</div>
-      <h2 class="feat-title">Summer<br><em>Collection</em><br>2025</h2>
-      <a href="#" class="btn-fill" style="margin-top:8px;">Explore the Drop</a>
-    </div>
-  </div>
-</div>
-
-<!-- The Edit (3 col) -->
-<section class="section">
-  <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Trending Now</div>
-      <h2 class="sec-title">The <em>Edit</em></h2>
-    </div>
-    <a href="#" class="link-all">View All</a>
-  </div>
-
-  <div class="grid-3">
-
-    <div class="pc">
-      <div class="pc-img">
-        <img src="images/garin-chadwick-pCaX3B3iCIg-unsplash.jpg" alt="Rose Lace Lingerie" loading="lazy">
-        <span class="pc-badge">New</span>
-        <div class="pc-actions">
-          <button class="pc-action-btn" title="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
-        </div>
-        <button class="pc-quick" onclick="addToCart(this, 'Rose Lace Set')">Quick Add</button>
-      </div>
-      <div class="pc-info">
-        <div class="pc-cat">Lingerie · Lace Set</div>
-        <div class="pc-name">Rose Lace Set</div>
-        <div class="pc-price">$75.00</div>
-      </div>
-    </div>
-
-    <div class="pc">
-      <div class="pc-img">
-        <img src="images/wilson-montoya-OFvzbZmGUnY-unsplash__1_.jpg" alt="Noir Chic Blazer" loading="lazy">
-        <span class="pc-badge">New</span>
-        <div class="pc-actions">
-          <button class="pc-action-btn" title="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
-        </div>
-        <button class="pc-quick" onclick="addToCart(this, 'Noir Chic Blazer')">Quick Add</button>
-      </div>
-      <div class="pc-info">
-        <div class="pc-cat">Fashion · Outerwear</div>
-        <div class="pc-name">Noir Chic Blazer</div>
-        <div class="pc-price">$145.00</div>
-      </div>
-    </div>
-
-    <div class="pc">
-      <div class="pc-img">
-        <img src="images/vicente-viana-gMqOGFozk_o-unsplash.jpg" alt="Crimson Wave Bikini" loading="lazy">
-        <div class="pc-actions">
-          <button class="pc-action-btn" title="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
-        </div>
-        <button class="pc-quick" onclick="addToCart(this, 'Crimson Wave Bikini')">Quick Add</button>
-      </div>
-      <div class="pc-info">
-        <div class="pc-cat">Swimwear · Strappy Bikini</div>
-        <div class="pc-name">Crimson Wave Bikini</div>
-        <div class="pc-price">$85.00</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="hr"></div>
-
-<!-- More Styles -->
-<section class="section" id="more">
-  <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Complete The Look</div>
-      <h2 class="sec-title">More <em>Styles</em></h2>
-    </div>
-    <a href="#" class="link-all">Shop All</a>
-  </div>
-
-  <div class="grid-4" style="margin-bottom:16px;">
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1544081172-8d2ae55ed715.avif" alt="Azure Dreams" loading="lazy"><button class="pc-quick" onclick="addToCart(this,'Azure Dreams')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Swimwear</div><div class="pc-name" style="font-size:17px;">Azure Dreams</div><div class="pc-price" style="font-size:13px;">$82.00</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1557873924-3a046517e6dc.avif" alt="Sunlit Set" loading="lazy"><span class="pc-badge">New</span><button class="pc-quick" onclick="addToCart(this,'Sunlit Set')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Bikini Set</div><div class="pc-name" style="font-size:17px;">Sunlit Set</div><div class="pc-price" style="font-size:13px;">$78.00</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1582639590011-f5a8416d1101.avif" alt="Velvet Touch" loading="lazy"><button class="pc-quick" onclick="addToCart(this,'Velvet Touch')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Lingerie</div><div class="pc-name" style="font-size:17px;">Velvet Touch</div><div class="pc-price" style="font-size:13px;">$68.00</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1583900985737-6d0495555783.avif" alt="Golden Glow" loading="lazy"><span class="pc-badge sale">Sale</span><button class="pc-quick" onclick="addToCart(this,'Golden Glow')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Swimwear</div><div class="pc-name" style="font-size:17px;">Golden Glow</div><div class="pc-price" style="font-size:13px;"><span class="old">$91.00</span>$68.00</div></div>
-    </div>
-  </div>
-
-  <div class="grid-4">
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1594221181011-049cc09be7df.avif" alt="Coastal Vibe" loading="lazy"><button class="pc-quick" onclick="addToCart(this,'Coastal Vibe')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Bikini</div><div class="pc-name" style="font-size:17px;">Coastal Vibe</div><div class="pc-price" style="font-size:13px;">$74.00</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1598771190815-05769c0eca1c.avif" alt="Wave Runner" loading="lazy"><span class="pc-badge">New</span><button class="pc-quick" onclick="addToCart(this,'Wave Runner')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Swimwear</div><div class="pc-name" style="font-size:17px;">Wave Runner</div><div class="pc-price" style="font-size:13px;">$86.00</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1624373540802-20001246abda.avif" alt="Midnight Bloom" loading="lazy"><button class="pc-quick" onclick="addToCart(this,'Midnight Bloom')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Lingerie</div><div class="pc-name" style="font-size:17px;">Midnight Bloom</div><div class="pc-price" style="font-size:13px;">$69.00</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="images/photo-1645106281508-25225f4c16d0.avif" alt="Silk Hour" loading="lazy"><button class="pc-quick" onclick="addToCart(this,'Silk Hour')">Quick Add</button></div>
-      <div class="pc-info"><div class="pc-cat">Fashion</div><div class="pc-name" style="font-size:17px;">Silk Hour</div><div class="pc-price" style="font-size:13px;">$120.00</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Newsletter -->
-<div class="newsletter">
-  <div class="sec-eyebrow" style="margin-bottom:14px;">Stay Connected</div>
-  <h2 class="nl-title">Get <em>15% Off</em> Your<br>First Order</h2>
-  <p class="nl-sub">Early access to new drops, exclusive offers &amp; style inspo — straight to your inbox.</p>
-  <div class="nl-form">
-    <input class="nl-input" type="email" placeholder="Enter your email address" id="nlInput">
-    <button class="nl-btn" id="nlBtn" onclick="subscribeNL()">Subscribe</button>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-top">
-    <div>
-      <div class="ft-brand">LUMINA</div>
-      <p class="ft-desc">Premium swimwear and fashion for the modern woman. Crafted with intention, worn with confidence.</p>
-      <div class="ft-socials">
-        <a href="#">IG</a>
-        <a href="#">PT</a>
-        <a href="#">TK</a>
-        <a href="#">FB</a>
-      </div>
-    </div>
-    <div>
-      <div class="ft-col-title">Shop</div>
-      <ul class="ft-links">
-        <li><a href="#">New Arrivals</a></li>
-        <li><a href="#">Swimwear</a></li>
-        <li><a href="#">Lingerie</a></li>
-        <li><a href="#">Fashion</a></li>
-        <li><a href="#">Sale</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="ft-col-title">Help</div>
-      <ul class="ft-links">
-        <li><a href="#">Size Guide</a></li>
-        <li><a href="#">Shipping &amp; Returns</a></li>
-        <li><a href="#">Track Order</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="ft-col-title">Company</div>
-      <ul class="ft-links">
-        <li><a href="#">About LUMINA</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Press</a></li>
-        <li><a href="#">Affiliates</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 LUMINA. All rights reserved.</span>
-    <span>Privacy Policy &nbsp;·&nbsp; Terms &nbsp;·&nbsp; Cookie Settings</span>
-  </div>
-</footer>
-
-<!-- Toast -->
-<div class="toast" id="toast"></div>
-
-<script>
-  // Nav scroll effect
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('pinned', window.scrollY > 60);
-  });
-
-  // Hero image pan-in
-  const heroImg = document.getElementById('heroImg');
-  const markReady = () => heroImg.classList.add('ready');
-  heroImg.complete ? markReady() : heroImg.addEventListener('load', markReady);
-
-  // Category pills
-  document.querySelectorAll('.cat-pill').forEach(p => {
-    p.addEventListener('click', () => {
-      document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
-      p.classList.add('active');
-    });
-  });
-
-  // Toast helper
-  let toastTimer;
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
-  }
-
-  // Quick Add
-  function addToCart(btn, name) {
-    const orig = btn.textContent;
-    btn.textContent = '✓ Added to Bag';
-    btn.style.background = '#2d6a4f';
-    setTimeout(() => {
-      btn.textContent = orig;
-      btn.style.background = '';
-    }, 1800);
-    showToast(`"${name}" added to your bag`);
-  }
-
-  // Wishlist
-  document.querySelectorAll('.pc-action-btn').forEach(b => {
-    b.addEventListener('click', e => {
-      e.stopPropagation();
-      b.style.background = '#c97f5e';
-      const card = b.closest('.pc');
-      const name = card.querySelector('.pc-name')?.textContent || 'Item';
-      showToast(`"${name}" saved to wishlist`);
-      setTimeout(() => b.style.background = '', 1200);
-    });
-  });
-
-  // Newsletter
-  function subscribeNL() {
-    const input = document.getElementById('nlInput');
-    const btn = document.getElementById('nlBtn');
-    if (!input.value.includes('@')) {
-      showToast('Please enter a valid email address');
-      return;
-    }
-    btn.textContent = '✓ Subscribed!';
-    btn.style.background = '#2d6a4f';
-    input.value = '';
-    showToast('Welcome to LUMINA! Check your inbox for your discount.');
-    setTimeout(() => {
-      btn.textContent = 'Subscribe';
-      btn.style.background = '';
-    }, 3200);
-  }
-</script>
+<!-- All images from picsum.photos with 'bikini' seed to get relevant swimwear imagery -->
 </body>
 </html>
