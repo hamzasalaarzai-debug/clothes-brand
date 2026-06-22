@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sun & Swim · Calvin Klein</title>
+  <title>Sun & Swim · 50 Bikinis</title>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -18,7 +18,7 @@
       color: #1e1e1e;
     }
     .wrapper {
-      max-width: 1280px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 1.5rem 2rem;
     }
@@ -176,51 +176,65 @@
       color: #d48c6c;
       font-size: 1.4rem;
     }
+    .section-title .count {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #888;
+      margin-left: 0.5rem;
+    }
 
     /* product grid */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 2rem 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.8rem 1.2rem;
       margin: 1.5rem 0 3rem 0;
     }
     .product-card {
       background: white;
-      border-radius: 24px;
-      padding: 0.8rem 0.8rem 1.4rem 0.8rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+      border-radius: 20px;
+      padding: 0.6rem 0.6rem 1.2rem 0.6rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
       transition: transform 0.15s, box-shadow 0.2s;
       border: 1px solid #f0ebe6;
     }
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.04);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
       border-color: #ddd6ce;
     }
     .product-image {
       background: #f0ebe6;
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
       aspect-ratio: 1 / 1.1;
     }
-    .product-image svg {
+    .product-image img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
       display: block;
+      transition: transform 0.3s;
+    }
+    .product-card:hover .product-image img {
+      transform: scale(1.02);
     }
     .product-info {
       padding: 0 0.2rem;
     }
     .product-name {
       font-weight: 480;
-      font-size: 1rem;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .product-price {
       font-weight: 400;
       color: #3f3f3f;
-      margin-top: 0.2rem;
-      font-size: 0.95rem;
+      margin-top: 0.15rem;
+      font-size: 0.9rem;
     }
     .product-price span {
       color: #d48c6c;
@@ -229,12 +243,12 @@
     .product-tag {
       display: inline-block;
       background: #ece5de;
-      font-size: 0.7rem;
-      padding: 0.15rem 0.8rem;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.7rem;
       border-radius: 30px;
       letter-spacing: 0.3px;
       color: #4d3e32;
-      margin-top: 0.3rem;
+      margin-top: 0.2rem;
     }
 
     /* footer */
@@ -288,6 +302,10 @@
         bottom: 8px;
         right: 10px;
       }
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+      }
     }
   </style>
 </head>
@@ -322,7 +340,7 @@
       </div>
     </div>
     <div class="hero-image">
-      <!-- The exact Calvin Klein image from Unsplash (kyle-smith-tlowJ-oYAjU) -->
+      <!-- The Calvin Klein image you provided (kyle-smith-tlowJ-oYAjU) -->
       <img
         src="https://images.unsplash.com/photo-tlowJ-oYAjU?w=600&h=450&fit=crop&crop=center&auto=format"
         alt="Calvin Klein beach style"
@@ -332,204 +350,14 @@
     </div>
   </section>
 
-  <!-- BIKINI EDIT – all embedded vector graphics (always visible) -->
-  <div class="section-title"><i class="fas fa-circle" style="font-size: 0.6rem;"></i> Bikini edit</div>
-  <div class="product-grid">
-
-    <!-- Card 1: Triangle -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#fcefe6" />
-          <path d="M130 200 L200 140 L270 200 L240 260 L160 260 Z" fill="#d48c6c" />
-          <path d="M160 260 L160 340 L240 340 L240 260 Z" fill="#d48c6c" />
-          <circle cx="200" cy="120" r="28" fill="#e8b08c" />
-          <text x="120" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">🔺 triangle</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Triangle tie bikini</div>
-        <div class="product-price"><span>$68</span></div>
-        <span class="product-tag">new</span>
-      </div>
-    </div>
-
-    <!-- Card 2: High-waist -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#f5efe8" />
-          <path d="M140 190 L260 190 L240 150 L160 150 Z" fill="#c97e5a" />
-          <path d="M120 260 L280 260 L260 320 L140 320 Z" fill="#c97e5a" />
-          <rect x="150" y="320" width="100" height="30" fill="#e8b08c" />
-          <text x="120" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">⬆️ high-waist</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">High-waist retro bikini</div>
-        <div class="product-price"><span>$74</span></div>
-        <span class="product-tag">classic</span>
-      </div>
-    </div>
-
-    <!-- Card 3: Sporty -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#e8f0f0" />
-          <path d="M150 170 L250 170 L270 220 L130 220 Z" fill="#4a7c7c" />
-          <path d="M130 220 L270 220 L250 310 L150 310 Z" fill="#4a7c7c" />
-          <circle cx="200" cy="270" r="20" fill="#68a0a0" />
-          <text x="140" y="400" font-family="Arial" font-size="26" fill="#3a5a5a" font-weight="bold">🏊 sporty</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Sporty halter bikini</div>
-        <div class="product-price"><span>$62</span></div>
-        <span class="product-tag">active</span>
-      </div>
-    </div>
-
-    <!-- Card 4: Bandeau -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#fcf4ed" />
-          <rect x="120" y="170" width="160" height="60" rx="20" fill="#d48c6c" />
-          <path d="M130 230 L270 230 L250 310 L150 310 Z" fill="#d48c6c" />
-          <circle cx="200" cy="270" r="10" fill="#e8b08c" />
-          <text x="120" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">〰️ bandeau</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Bandeau strapless bikini</div>
-        <div class="product-price"><span>$79</span></div>
-        <span class="product-tag">sale</span>
-      </div>
-    </div>
-
-    <!-- Card 5: Crochet -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#fcf0e6" />
-          <path d="M140 160 L260 160 L280 210 L120 210 Z" fill="#c97e5a" />
-          <path d="M120 210 L280 210 L300 260 L100 260 Z" fill="#c97e5a" />
-          <path d="M100 260 L300 260 L280 330 L120 330 Z" fill="#c97e5a" />
-          <circle cx="160" cy="190" r="8" fill="#e8b08c" />
-          <circle cx="240" cy="190" r="8" fill="#e8b08c" />
-          <text x="130" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">🧶 crochet</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Crochet fringe bikini</div>
-        <div class="product-price"><span>$88</span></div>
-        <span class="product-tag">boho</span>
-      </div>
-    </div>
-
-    <!-- Card 6: Ribbed -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#f7f0ea" />
-          <rect x="130" y="180" width="140" height="40" rx="5" fill="#a67c6b" />
-          <path d="M130 220 L270 220 L250 290 L150 290 Z" fill="#a67c6b" />
-          <line x1="160" y1="180" x2="160" y2="290" stroke="#d4b8a8" stroke-width="4" />
-          <line x1="200" y1="180" x2="200" y2="290" stroke="#d4b8a8" stroke-width="4" />
-          <line x1="240" y1="180" x2="240" y2="290" stroke="#d4b8a8" stroke-width="4" />
-          <text x="130" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">〰️ ribbed</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Ribbed texture bikini</div>
-        <div class="product-price"><span>$56</span></div>
-        <span class="product-tag">trend</span>
-      </div>
-    </div>
+  <!-- 50 Bikini Collection – generated by JavaScript -->
+  <div class="section-title">
+    <i class="fas fa-circle" style="font-size: 0.6rem;"></i> Bikini Collection
+    <span class="count">(50 styles)</span>
   </div>
+  <div id="productGrid" class="product-grid"></div>
 
-  <!-- MORE SWIM -->
-  <div class="section-title" style="margin-top: 0.5rem;"><i class="fas fa-circle" style="font-size: 0.6rem;"></i> More swim</div>
-  <div class="product-grid">
-
-    <!-- Card 7: One-piece -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#eae3dc" />
-          <path d="M140 160 L260 160 L280 220 L120 220 Z" fill="#3a5a5a" />
-          <path d="M120 220 L280 220 L260 340 L140 340 Z" fill="#3a5a5a" />
-          <circle cx="200" cy="280" r="18" fill="#5a7a7a" />
-          <text x="120" y="400" font-family="Arial" font-size="26" fill="#3a5a5a" font-weight="bold">🏊 one-piece</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Classic one-piece</div>
-        <div class="product-price"><span>$85</span></div>
-        <span class="product-tag">essential</span>
-      </div>
-    </div>
-
-    <!-- Card 8: String -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#f5e6e6" />
-          <path d="M160 180 L240 180 L260 220 L140 220 Z" fill="#c97e5a" />
-          <path d="M140 220 L260 220 L240 310 L160 310 Z" fill="#c97e5a" />
-          <line x1="160" y1="180" x2="130" y2="140" stroke="#c97e5a" stroke-width="3" />
-          <line x1="240" y1="180" x2="270" y2="140" stroke="#c97e5a" stroke-width="3" />
-          <text x="140" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">🪢 string</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Minimal string bikini</div>
-        <div class="product-price"><span>$49</span></div>
-        <span class="product-tag">sale</span>
-      </div>
-    </div>
-
-    <!-- Card 9: Tropical -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#faf0e6" />
-          <circle cx="150" cy="180" r="15" fill="#e8845a" />
-          <circle cx="250" cy="180" r="15" fill="#e8845a" />
-          <path d="M120 230 L280 230 L260 310 L140 310 Z" fill="#e8845a" />
-          <circle cx="180" cy="260" r="10" fill="#f5cba0" />
-          <circle cx="220" cy="260" r="10" fill="#f5cba0" />
-          <text x="130" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">🌴 tropical</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Tropical print bikini</div>
-        <div class="product-price"><span>$72</span></div>
-        <span class="product-tag">new</span>
-      </div>
-    </div>
-
-    <!-- Card 10: Cover-up -->
-    <div class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="440" fill="#fcf8f0" />
-          <path d="M120 160 L280 160 L300 240 L100 240 Z" fill="#e8c9b0" opacity="0.6" />
-          <path d="M100 240 L300 240 L280 360 L120 360 Z" fill="#e8c9b0" opacity="0.6" />
-          <circle cx="150" cy="200" r="12" fill="#d4b8a8" />
-          <circle cx="250" cy="200" r="12" fill="#d4b8a8" />
-          <text x="140" y="400" font-family="Arial" font-size="26" fill="#7a5a4a" font-weight="bold">🧣 kaftan</text>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Sheer kaftan cover-up</div>
-        <div class="product-price"><span>$45</span></div>
-        <span class="product-tag">cover</span>
-      </div>
-    </div>
-  </div>
-
+  <!-- footer -->
   <footer class="footer">
     <div>
       <small>© 2026 Sun & Swim — made with <i class="fas fa-heart" style="color: #d48c6c;"></i> for beach days</small>
@@ -543,5 +371,76 @@
   </footer>
 
 </div>
+
+<script>
+  (function() {
+    // Generate 50 product items with unique data
+    const productNames = [
+      "Triangle Tie", "High-Waist Retro", "Sporty Halter", "Bandeau Strapless",
+      "Crochet Fringe", "Ribbed Texture", "Classic One-Piece", "Minimal String",
+      "Tropical Print", "Sheer Kaftan", "Ruffle Shoulder", "Wrap Front",
+      "Halter Neck", "Push-Up", "Brazilian Cut", "High-Leg",
+      "Color Block", "Animal Print", "Polka Dot", "Striped",
+      "Lace Trim", "Mesh Detail", "Zipper Front", "Tankini",
+      "Boy Short", "Skirt Bottom", "Tie Side", "Ring Detail",
+      "Cross Back", "Plunge", "Longline", "Crop Top",
+      "Off-Shoulder", "One-Shoulder", "Asymmetric", "Cut-Out",
+      "Crinkle", "Seersucker", "Satin", "Velvet",
+      "Neon", "Pastel", "Metallic", "Embroidered",
+      "Tassel", "Beaded", "Fringed", "Ruching",
+      "Belted", "Convertible"
+    ];
+
+    // Random prices between $35 and $120
+    const tags = ["new", "sale", "classic", "active", "boho", "trend", "essential", "cover", "luxe", "vintage"];
+
+    // Shuffle function for tags
+    function getRandomTag() {
+      return tags[Math.floor(Math.random() * tags.length)];
+    }
+
+    // Create 50 items (some names may repeat, but we'll use 50 unique from the list above)
+    // Ensure we have exactly 50; the list has 50, so we can just map
+    const items = productNames.map((name, index) => {
+      const price = (Math.floor(Math.random() * 85) + 35).toString(); // 35-120
+      const tag = getRandomTag();
+      // Use a unique seed for each image: "bikini" + index + random
+      const seed = `bikini_${index}_${Date.now()}_${Math.random()}`;
+      // We use loremflickr with keyword bikini and a random query to avoid caching
+      const imgUrl = `https://loremflickr.com/400/440/bikini?random=${index}_${Math.random().toString(36).substring(2)}`;
+      return {
+        name: name + (index % 3 === 0 ? " Bikini" : ""),
+        price: price,
+        tag: tag,
+        img: imgUrl
+      };
+    });
+
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+
+    // Build HTML
+    let html = '';
+    items.forEach((item) => {
+      html += `
+        <div class="product-card">
+          <div class="product-image">
+            <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22440%22%3E%3Crect width=%22400%22 height=%22440%22 fill=%22%23f0ebe6%22/%3E%3Ctext x=%22100%22 y=%22220%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23999%22%3E👙 bikini%3C/text%3E%3C/svg%3E'" />
+          </div>
+          <div class="product-info">
+            <div class="product-name">${item.name}</div>
+            <div class="product-price"><span>$${item.price}</span></div>
+            <span class="product-tag">${item.tag}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    grid.innerHTML = html;
+  })();
+</script>
+
+<!-- Note: The images are from Loremflickr (free service) and may take a moment to load. 
+     If any image fails, a fallback SVG with a bikini icon will appear. -->
 </body>
 </html>
